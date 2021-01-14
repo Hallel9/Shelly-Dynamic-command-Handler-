@@ -1,0 +1,24 @@
+{
+  "name": "ShellyDynamic-command-Handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hallel9/Shelly-Dynamic-command-Handler-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hallel9/Shelly-Dynamic-command-Handler-/issues"
+  },
+  "homepage": "https://github.com/Hallel9/Shelly-Dynamic-command-Handler-#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "express": "^4.17.1"
+  }
+}
