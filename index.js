@@ -1,9 +1,16 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = new Discord.Client({ ws: { properties: { $browser: "Discord Android" }} });
 const keepalive = require('./server.js');
 const fs = require('fs');
 const prefix = '%'
 const ownerids = ["241632903258177536", "645592347475836949"]
+const mongo = require("./mongo.js")
+
+// Database =>
+const modelUser = require('./models/users.js')
+const modelBank = require('./models/bank.js')
+const modelShop = require('./models/shop.js')
+const modelBoost = require('./models/boosters.js')
 
 const cooldowns = new Discord.Collection();
 
@@ -17,7 +24,10 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.once('ready', () => {
+client.once('ready', async () => {
+  await mongo().then(mongoose => {
+    console.log('MongoDb : database is Online')
+  })
   console.log('Ready!');
   let botstatus = fs.readFileSync('./bot-status.json');
   botstatus = JSON.parse(botstatus);
@@ -38,6 +48,53 @@ client.once('ready', () => {
 // message event =>
 
 client.on('message', async message => {
+if(message.author.bot) return;
+if (!message.content.startsWith(prefix)) {
+
+let bankUser = await modelBank.findOne({ userID: message.author.id });
+
+// get user from user model
+let user = await modelUser.findOne({ userID: message.author.id });
+
+if(!bankUser) {
+ let newBank = new modelBank({
+      userID: message.author.id,
+      money: 0,
+      max: 500,
+    });
+    // save the new bank user
+await newBank.save().catch((err) => console.error(err));
+// then find the new bank user
+bankUser = await modelBank.findOne({ userID: message.author.id });
+};
+
+// if the user is not in the db
+if(!user) {
+  let newUser = new modelUser({
+      userID: message.author.id,
+      money: 0,
+      items: [],
+      level: 0,
+      points: 0,
+      boosts: [],
+      npoints: 500
+    });
+  await newUser.save().catch((err) => console.error(err));
+user = await modelUser.findOne({ userID: message.author.id });
+};
+
+user.points = user.points + 1
+ await user.save()
+
+if(user.npoints < user.points) {
+user.npoints = user.npoints + 500;
+user.level = user.level + 1
+user.money = user.money + 200
+return await user.save();
+}
+
+}
+
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -45,6 +102,7 @@ const commandName = args.shift().toLowerCase();
   const wrongmoji = await message.client.emojis.cache.get("799137549176143892");
 const command = client.commands.get(commandName)
 	|| client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
 
 if (!command) return;
 
@@ -101,18 +159,8 @@ command.execute(message, args);
 	message.reply(`${wrongmoji} there was an error trying to execute that command!`);
 }
 
-/*
-	if (command === 'ping') {
-		message.channel.send('Pong');
-	} else if (command === 'beep') {
-		message.channel.send('Boop.');
-	} else if
-  (command === 'invite') {
-    message.channel.send('invite link: https://discord.com/api/oauth2/authorize?client_id=743630959857107036&permissions=8&scope=bot')
-  }*/
-
+  
 });
-
 
 
 

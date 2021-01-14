@@ -12,7 +12,7 @@ const command = message.client.commands.get(commandName)
 			|| message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 	if (command) {
-			return message.channel.send(`${wrongmoji} The command \`${commandName}\` is already loaded use \`.reload\` instead`);
+			return message.channel.send(`${wrongmoji} The command \`${commandName}\` is already loaded use \`%reload\` instead`);
 		}
 
 		try {

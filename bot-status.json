@@ -1,6 +1,6 @@
 {
   "activity": "true",
-  "activitytype": "STREAMING",
-  "activitytext": "CaptainHorn's server",
+  "activitytype": "LISTENING",
+  "activitytext": "Spotify 🎼",
   "activityurl": "https://twitch.tv/whatever"
 }
