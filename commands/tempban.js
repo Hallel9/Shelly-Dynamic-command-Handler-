@@ -3,9 +3,8 @@ const Discord = require("discord.js")
 
 module.exports = {
     name :"tempban",
-		description: 'Currently unavailable'
-    aliases: ["tb"],
-    async execute(message, args) {
+		description: 'Currently unavailable',
+		 execute(message, args) {
         if(message.author.bot || !message.guild) return 
         if(!message.member.permissions.has("ADMINISTRATOR") || !message.member.permissions.has("BAN_MEMBERS")) return message.channel.send(`You do not have access to this command!`)
         
