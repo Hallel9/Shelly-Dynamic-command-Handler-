@@ -3,7 +3,7 @@ const modelUser = require('../models/users.js')
 module.exports = {
     name: 'balance',
     guildOnly: true,
-    description: 'Sets you as AFK',
+    description: 'Currently doesn\'t work. Has to be fixed.',
 		execute(message, args) {
     let member = message.mentions.users.first() || message.author;
 if(!message.mentions.users.first() && args[0]) {
