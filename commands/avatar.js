@@ -18,14 +18,14 @@ async execute(message, args) {
         } else {
             const user = message.mentions.users.first();
             if(!user){
-            return message.reply('This member doesn\'t exist !');
+            return message.reply('This member doesn\'t exist!');
         };
         const msg = await message.reply(`Searching for ${user}'s avatar...`);
         message.channel.send(new MessageEmbed()
             .setColor(0x7289DA)
             .setDescription(`Asked by ${message.author.tag}.`)
             .setImage(user.displayAvatarURL({dynamic: true, size:4096})));
-             msg.edit(`${message.author}, Here's ${user.tag}'s avatar ! `);
+             msg.edit(`${message.author}, Here's ${user.tag}'s avatar! `);
             
         };
         

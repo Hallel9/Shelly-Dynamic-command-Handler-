@@ -6,6 +6,7 @@ const prefix = '%'
 const ownerids = ["241632903258177536", "645592347475836949"]
 const mongo = require("./mongo.js")
 
+
 // Database =>
 const modelUser = require('./models/users.js')
 const modelBank = require('./models/bank.js')
@@ -15,6 +16,7 @@ const modelBoost = require('./models/boosters.js')
 const cooldowns = new Discord.Collection();
 
 client.commands = new Discord.Collection();
+client.error = require('./utils/messageerr.js')
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -23,6 +25,17 @@ for (const file of commandFiles) {
 
 	client.commands.set(command.name, command);
 }
+
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    const event = require(`./events/${file}`);
+    let eventName = file.split(".")[0];
+    client.on(eventName, event.bind(null, client));
+  });
+});
+
+
 
 client.once('ready', async () => {
   await mongo().then(mongoose => {

@@ -1,6 +1,6 @@
 {
   "activity": "true",
-  "activitytype": "LISTENING",
-  "activitytext": "Spotify 🎼",
+  "activitytype": "STREAMING",
+  "activitytext": "discord.js.org",
   "activityurl": "https://twitch.tv/whatever"
 }

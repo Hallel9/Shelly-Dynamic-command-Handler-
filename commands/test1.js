@@ -11,6 +11,6 @@ let user = await modelUser.findOne({ userID: message.author.id });
 user.items.remove(args[0] || 'RANT')
 //push
 await user.save()
-message.channel.send('done')
+message.channel.send('Test Successful! ✅')
 	},
 };

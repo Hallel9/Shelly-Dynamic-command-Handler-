@@ -10,16 +10,7 @@ module.exports = {
   let user = await modelUser.findOne({ userID: member.id });
 
 if(!user) {
-  newUser = new modelUser({
-      userID: member.id,
-      money: 0,
-      items: [],
-      level: 0,
-      points: 0,
-      boosts: [],
-      npoints: 0
-    });
-return await newUser.save().catch((err) => console.error(err));
+return message.client.error(message, 'User does not have a level', 'NODATA')
 };
 const rank = new canvacord.Rank()
     .setCurrentXP(user.points)
