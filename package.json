@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Hallel9/Shelly-Dynamic-command-Handler-#readme",
   "dependencies": {
+    "aki-api": "^5.2.1",
     "aws4": "^1.11.0",
     "canvacord": "^5.0.8",
     "discord.js": "^12.5.1",
