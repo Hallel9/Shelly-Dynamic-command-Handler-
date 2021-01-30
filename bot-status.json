@@ -1,6 +1,6 @@
 {
   "activity": "true",
   "activitytype": "STREAMING",
-  "activitytext": "discord.js.org",
+  "activitytext": "%help",
   "activityurl": "https://twitch.tv/whatever"
 }

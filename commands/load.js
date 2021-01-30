@@ -4,9 +4,8 @@ module.exports = {
 	description: 'loads a command',
 	args: true,
 async	execute(message, args) {
-
-   const correctemoji = message.client.emojis.cache.get("799137169054629918");
-   const wrongmoji = await message.client.emojis.cache.get("799137549176143892");
+   const correctemoji = message.client.emojis.cache.get("801454895370076190");
+   const wrongmoji = await message.client.emojis.cache.get("801454885635358771");
 		const commandName = args[0].toLowerCase();
 const command = message.client.commands.get(commandName)
 			|| message.client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));

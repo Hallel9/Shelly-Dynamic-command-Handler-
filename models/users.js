@@ -8,6 +8,10 @@ const userSchema = mongoose.Schema({
   points: {type: Number, default: 1, required: true},
   boosts: {type:Array, default: []},
   npoints:  {type: Number, default: 500, required: true},
+  robSlowmode: {
+        type: String,
+        default: null,
+    },
 });
 
 module.exports = mongoose.model("user", userSchema);

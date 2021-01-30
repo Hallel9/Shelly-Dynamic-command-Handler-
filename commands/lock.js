@@ -19,4 +19,5 @@ msg.channel.send(embed)
     
     
   
-}}
+	}
+}

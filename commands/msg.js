@@ -16,8 +16,11 @@ module.exports = {
             const attachment = message.attachments.first()
             if (!attachment) {
                 message.channel.send(new MessageEmbed()
-                .setDescription(`${letter}`)
-                .setColor('#f0e7e7')
+                .setTitle('<:greentick:800143591125155841> Message changed to an embed')
+								.setDescription(`${letter}`)
+                .setColor('#e100fa')
+								.setThumbnail('https://cdn.discordapp.com/avatars/743630959857107036/18c26ef855bf54dc4245b59b88ff3e10.png?size=4096')
+								.setAuthor(message.member)
             )
             
             } else {

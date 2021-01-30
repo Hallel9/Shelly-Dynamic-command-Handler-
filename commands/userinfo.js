@@ -21,6 +21,8 @@ module.exports = {
     .addField(`**Nickname (If Applicable):**`, `${memberob.nickname || `**Cannot Find A Nickname For This User**`}`)
     .addField(`**Joined Server:**`, `${memberob.joinedAt}`)
     .addField(`**Joined Discord:**`, `${usr.createdAt}`)
+		.addField(`**Tag:**`, `${usr.discriminator}`)
+		.addField(`**IsBot:**`, `${usr.bot}`)
     .setColor('RANDOM')
     message.channel.send(embed);
  }

@@ -26,8 +26,9 @@ if(member.bot) return message.channel.send(`\`\`\`Error - Bot - User ${member.us
 
   let user = await modelUser.findOne({ userID:member.id });
   let banku = await modelBank.findOne({ userID: member.id });
-  const moneyem = message.client.emojis.cache.get('799214673160306728')
-  const levelem = message.client.emojis.cache.get('799216651357650945')
+  const moneyem = message.client.emojis.cache.get('801449990299844608')
+  const pointlem = message.client.emojis.cache.get('801450287659221012')
+  const levelem = message.client.emojis.cache.get('801450441585197126')
 if(!user) {
  return message.client.error(message, 'user does not any related data in our database', 'NODATA')
 };
@@ -37,7 +38,7 @@ if(!banku) {
 const item = user.items.map(it => it).join(', ') || 'None'
 const at = new Discord.MessageEmbed()
 .setTitle(`**${member.username}'s** profile`)
-.setDescription(`**__GENERAL__**\n\n ${moneyem} Money(Wallet): ${user.money}\n${levelem} Level: ${user.level}\npoints: ${user.points}\nItems: ${item}\n\n**__BANK__**\n\nMoney(in bank) : ${banku.money}\nMax depositable value: ${banku.max}`)
+.setDescription(`**__GENERAL__**\n\n ${moneyem} Money(Wallet): ${user.money}\n${levelem} Level: ${user.level}\n${pointlem} points: ${user.points}\nItems: ${item}\n\n**__BANK__**\n\nMoney(in bank) : ${banku.money}\nMax depositable value: ${banku.max}`)
   return message.channel.send(at);
 //message.channel.send(`your level is ${user.level} - points - ${user.points}`)
 	},

@@ -1,7 +1,7 @@
 module.exports = {
   name: 'give',
   description: 'Gives a cookie',
-  execute ( message, args, text, prefix, instance ) { // Using WOKCommands
+  execute(message, args) { // Using WOKCommands
     const { channel, mentions } = message;
     const target = mentions.members.first();
 

@@ -8,7 +8,7 @@ server.get('/', (req, res) => res.send('Working!'));
 server.get('/stats/:id', (req, res) => res.send(req.params.id));
 
 function keepAlive(){
-    server.listen(8000, ()=>{console.log("Server is Ready!")});
+    server.listen(10000, ()=>{console.log("Server is Ready!")});
 }
 
 module.exports = keepAlive
