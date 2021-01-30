@@ -11,7 +11,7 @@ module.exports = {
   
   execute (message,args,text,errorembed) {
 
-    if (!args[0]) return message.reply('a, aaa a \n a a aaa a \n _ _\n _ _ \na\ngive an emoji name or id')
+    if (!args[0]) return message.reply('Give an emoji name or id')
 
   
     let emoji = message.guild.emojis.cache.find(emoji => emoji.name === args[0] || emoji.id === args[0] || emoji == args[0].replace(/([^\d])+/gim, ''));
